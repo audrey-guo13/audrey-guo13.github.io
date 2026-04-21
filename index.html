@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Audrey Guo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --sand:    #f5f0e8;
+  --sand2:   #ede6d6;
+  --ink:     #1e1a16;
+  --ink2:    #2c2720;
+  --rose:    #b07d6e;
+  --rose-l:  #d4a99a;
+  --sage:    #7a8c7e;
+  --muted:   #7a6f65;
+  --border:  rgba(176,125,110,0.2);
+  --border2: rgba(30,26,22,0.1);
+}
+
+html{scroll-behavior:smooth;}
+body{background:var(--sand);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.3rem 6vw;
+  background:rgba(245,240,232,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border2);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;letter-spacing:.1em;color:var(--ink);text-decoration:none;}
+.nav-links{display:flex;gap:2.4rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--rose);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:10rem 6vw 6rem;
+  background:var(--sand);
+  position:relative;overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;right:-2vw;top:50%;transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,18vw,18rem);
+  font-weight:600;color:rgba(176,125,110,0.07);
+  line-height:1;pointer-events:none;user-select:none;white-space:nowrap;
+}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:1.2rem;}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.8rem,10vw,9rem);
+  font-weight:300;line-height:1;
+  color:var(--ink);margin-bottom:.4rem;
+}
+.hero-name em{font-style:italic;color:var(--rose);}
+.hero-rule{width:60px;height:1px;background:var(--rose);margin:1.6rem 0;}
+.hero-tagline{
+  font-size:clamp(1rem,1.8vw,1.2rem);
+  color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:2.8rem;
+}
+.hero-tagline strong{color:var(--ink);font-weight:400;}
+.btn{
+  display:inline-block;padding:.72rem 2rem;
+  border:1px solid var(--ink);
+  color:var(--ink);font-family:'Outfit',sans-serif;font-size:.72rem;
+  letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+  background:transparent;cursor:pointer;
+  transition:background .3s,color .3s,transform .25s;
+}
+.btn:hover{background:var(--ink);color:var(--sand);transform:translateY(-2px);}
+.btn-rose{border-color:var(--rose);color:var(--rose);}
+.btn-rose:hover{background:var(--rose);color:#fff;}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:6vw;
+  font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:.8rem;
+}
+.hero-scroll::before{content:'';width:32px;height:1px;background:var(--rose);}
+
+/* ── SHARED ── */
+.section-label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.15;margin-bottom:2rem;color:var(--ink);}
+.section-title em{font-style:italic;color:var(--rose);}
+.divider{width:40px;height:1px;background:var(--rose);margin:0 0 2rem;}
+
+/* ── ABOUT ── */
+#about{background:var(--ink);padding:7rem 6vw;color:var(--sand);}
+#about .section-label{color:var(--rose-l);}
+#about .section-title{color:var(--sand);}
+#about .section-title em{color:var(--rose-l);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:start;max-width:960px;}
+.about-text p{color:rgba(245,240,232,.65);font-size:.95rem;margin-bottom:1rem;}
+.about-text p span{color:var(--sand);}
+.about-stats{display:flex;flex-direction:column;gap:1.8rem;}
+.stat{border-left:1px solid rgba(176,125,110,.3);padding-left:1.4rem;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--rose-l);line-height:1;}
+.stat-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.4);margin-top:.2rem;}
+
+/* ── SKILLS ── */
+#skills{background:var(--sand2);padding:7rem 6vw;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;max-width:960px;}
+.skill-card{
+  border:1px solid var(--border2);padding:1.8rem 1.6rem;
+  background:var(--sand);
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.skill-card:hover{border-color:var(--rose);transform:translateY(-4px);box-shadow:0 12px 32px rgba(176,125,110,.12);}
+.skill-icon{font-size:1.2rem;margin-bottom:.8rem;color:var(--rose);}
+.skill-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ink);margin-bottom:.4rem;}
+.skill-desc{font-size:.8rem;color:var(--muted);line-height:1.65;}
+
+/* ── PROJECTS ── */
+#projects{background:var(--sand);padding:7rem 6vw;}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.6rem;max-width:960px;}
+.project-card{
+  border:1px solid var(--border2);background:var(--sand2);overflow:hidden;
+  transition:transform .35s,box-shadow .35s;
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(30,26,22,.1);}
+.project-img{
+  width:100%;height:180px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;color:var(--rose);
+  border-bottom:1px solid var(--border2);
+  background:linear-gradient(135deg,var(--sand2),#e8dfd0);
+}
+.project-body{padding:1.6rem;}
+.project-tag{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem;}
+.project-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--ink);margin-bottom:.5rem;}
+.project-desc{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem;}
+.project-link{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:1px;transition:color .25s;}
+.project-link:hover{color:var(--rose);}
+
+/* ── CONTACT ── */
+#contact{background:var(--ink2);padding:7rem 6vw;text-align:center;}
+.contact-inner{max-width:520px;margin:0 auto;}
+#contact .section-label{color:var(--rose-l);}
+#contact .section-title{color:var(--sand);}
+.contact-sub{color:rgba(245,240,232,.5);font-size:.92rem;margin-bottom:2.4rem;}
+.contact-email{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);color:var(--rose-l);
+  text-decoration:none;display:block;margin-bottom:2.8rem;
+  transition:opacity .3s;
+}
+.contact-email:hover{opacity:.7;}
+.socials{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.social-link{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.35);text-decoration:none;transition:color .3s;}
+.social-link:hover{color:var(--rose-l);}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(245,240,232,.08);background:var(--ink2);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.2);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:640px){
+  .about-grid{grid-template-columns:1fr;}
+  .hero-bg-text{display:none;}
+  nav{padding:1.1rem 5vw;}
+  .nav-links{gap:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">AG</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">AUDREY</div>
+  <div class="hero-eyebrow">Business &amp; Marketing</div>
+  <h1 class="hero-name">Audrey<br/><em>Guo.</em></h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">I turn ideas into <strong>brands people love</strong> — through sharp strategy, clear storytelling, and work that actually moves people.</p>
+  <a href="#projects" class="btn">View My Work</a>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">Who I am</div>
+    <h2 class="section-title">Thoughtful work,<br/><em>deliberate intention.</em></h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Hi, I'm Audrey — a <span>business and marketing strategist</span> who believes the best work sits at the intersection of clarity and creativity.</p>
+      <p>I'm drawn to brands with a point of view — ones that know exactly what they stand for and aren't afraid to show it.</p>
+      <p>Whether it's building a go-to-market strategy or finding the right words for a campaign, I bring <span>curiosity, craft, and conviction</span> to every project.</p>
+      <br/>
+      <a href="#contact" class="btn btn-rose">Let's Work Together</a>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Projects completed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Curiosity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-label">What I do</div>
+    <h2 class="section-title">Areas of <em>expertise.</em></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">◈</div>
+      <div class="skill-name">Brand Strategy</div>
+      <div class="skill-desc">Positioning, identity, and voice — turning a business into something people feel.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">◉</div>
+      <div class="skill-name">Marketing Campaigns</div>
+      <div class="skill-desc">End-to-end campaign planning that connects with the right audience at the right moment.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">◇</div>
+      <div class="skill-name">Content & Copywriting</div>
+      <div class="skill-desc">Words that are intentional, sharp, and true to a brand's character.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">○</div>
+      <div class="skill-name">Market Research</div>
+      <div class="skill-desc">Digging into data and trends to understand what people actually want.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">▲</div>
+      <div class="skill-name">Growth Strategy</div>
+      <div class="skill-desc">Finding the levers that move a business forward, sustainably.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">✦</div>
+      <div class="skill-name">Social Media</div>
+      <div class="skill-desc">Building presence and community across platforms with purpose, not noise.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <div class="section-label">My work</div>
+    <h2 class="section-title">Selected <em>projects.</em></h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-img">◈</div>
+      <div class="project-body">
+        <div class="project-tag">Brand Strategy</div>
+        <div class="project-title">Project Title One</div>
+        <p class="project-desc">A short description of what you did, the challenge, and the result you achieved.</p>
+        <a href="#" class="project-link">View Case Study →</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-img">◉</div>
+      <div class="project-body">
+        <div class="project-tag">Campaign</div>
+        <div class="project-title">Project Title Two</div>
+        <p class="project-desc">A short description of what you did, the challenge, and the result you achieved.</p>
+        <a href="#" class="project-link">View Case Study →</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-img">◇</div>
+      <div class="project-body">
+        <div class="project-tag">Growth</div>
+        <div class="project-title">Project Title Three</div>
+        <p class="project-desc">A short description of what you did, the challenge, and the result you achieved.</p>
+        <a href="#" class="project-link">View Case Study →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="divider" style="margin:0 auto 2rem;"></div>
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's make<br/><em>something great.</em></h2>
+    <p class="contact-sub">Open to freelance projects, collaborations, and interesting conversations.</p>
+    <a href="mailto:hello@audreyguo.com" class="contact-email">hello@audreyguo.com</a>
+    <div class="socials">
+      <a href="#" class="social-link">LinkedIn</a>
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">Twitter / X</a>
+      <a href="#" class="social-link">Read.cv</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Audrey Guo — All rights reserved</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'), i*90);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
