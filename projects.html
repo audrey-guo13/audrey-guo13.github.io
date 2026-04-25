@@ -78,52 +78,62 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border2);font-s
 
 <div class="filters reveal">
   <button class="filter-btn active">All</button>
-  <button class="filter-btn">Brand Strategy</button>
-  <button class="filter-btn">Build</button>
+  <button class="filter-btn">Consulting</button>
   <button class="filter-btn">Content</button>
-  <button class="filter-btn">Marketing</button>
+  <button class="filter-btn">Entrepreneurship</button>
+  <button class="filter-btn">Tech & AI</button>
 </div>
 
 <div class="projects-section">
   <div class="projects-grid">
 
-    <a href="#" class="project-card reveal">
+    <a href="#" class="project-card reveal" data-category="tech">
       <div class="project-img">◈</div>
       <div class="project-body">
-        <div class="project-tag">Brand Strategy</div>
-        <div class="project-title">Project Title One</div>
-        <p class="project-desc">What you did, what the challenge was, and the result. Keep it to 2-3 sentences max.</p>
-        <span class="project-link">View Project →</span>
+        <div class="project-tag">Tech & AI</div>
+        <div class="project-title">This Portfolio Website</div>
+        <p class="project-desc">Built my first website from scratch using AI — no prior coding experience. Figured out VS Code, GitHub, and deployment in one day. Live in 81 minutes.</p>
+        <span class="project-link">You're looking at it →</span>
       </div>
     </a>
 
-    <a href="#" class="project-card reveal">
+    <a href="#" class="project-card reveal" data-category="content">
       <div class="project-img">◉</div>
       <div class="project-body">
-        <div class="project-tag">Build</div>
-        <div class="project-title">This Portfolio Website</div>
-        <p class="project-desc">Built my first website from scratch using AI — no prior coding experience. Live in one day.</p>
-        <span class="project-link">View Project →</span>
+        <div class="project-tag">Content · Ongoing</div>
+        <div class="project-title">byauddie — Building in Public</div>
+        <p class="project-desc">Started a content channel documenting everything I'm building and figuring out. First video posted April 2026.</p>
+        <span class="project-link">View Channel →</span>
       </div>
     </a>
 
-    <a href="#" class="project-card reveal">
+    <a href="#" class="project-card reveal" data-category="consulting">
       <div class="project-img">◇</div>
       <div class="project-body">
-        <div class="project-tag">Content</div>
-        <div class="project-title">Project Title Three</div>
-        <p class="project-desc">What you did, what the challenge was, and the result. Keep it to 2-3 sentences max.</p>
-        <span class="project-link">View Project →</span>
+        <div class="project-tag">Consulting · Completed</div>
+        <div class="project-title">180DC — Consumer Goods Brand Strategy</div>
+        <p class="project-desc">Led a 5-person consulting team to diagnose and reposition a consumer goods brand, identifying 'calm luxury' as the core positioning strategy through competitor mapping and customer analysis.</p>
+        <span class="project-link">Read More →</span>
       </div>
     </a>
 
-    <a href="#" class="project-card reveal">
+    <a href="#" class="project-card reveal" data-category="entrepreneurship">
       <div class="project-img">○</div>
       <div class="project-body">
-        <div class="project-tag">Marketing</div>
-        <div class="project-title">Project Title Four</div>
-        <p class="project-desc">What you did, what the challenge was, and the result. Keep it to 2-3 sentences max.</p>
-        <span class="project-link">View Project →</span>
+        <div class="project-tag">Entrepreneurship · Early Experiment</div>
+        <div class="project-title">Amazon eCommerce — First Attempt</div>
+        <p class="project-desc">Built and ran a solo eCommerce business at 16. Sourced products from Chinese manufacturers, learned international logistics, and got further than most do. Didn't ship. Learned everything.</p>
+        <span class="project-link">Read More →</span>
+      </div>
+    </a>
+
+    <a href="#" class="project-card reveal" data-category="entrepreneurship">
+      <div class="project-img">▲</div>
+      <div class="project-body">
+        <div class="project-tag">Entrepreneurship · Early Experiment</div>
+        <div class="project-title">Quest Incubator — Gift Card Exchange Platform</div>
+        <p class="project-desc">Tried to build a gift card exchanging platform as part of a startup incubator. Hit a wall without engineering resources. Didn't ship — but learned what it actually takes to build a product from zero.</p>
+        <span class="project-link">Read More →</span>
       </div>
     </a>
 
@@ -133,8 +143,30 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border2);font-s
 <footer>© 2026 Audrey Guo — All rights reserved</footer>
 
 <script>
+// Scroll reveal
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*90);obs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Filters
+const filterMap = {
+  'All': 'all',
+  'Consulting': 'consulting',
+  'Content': 'content',
+  'Entrepreneurship': 'entrepreneurship',
+  'Tech & AI': 'tech'
+};
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = filterMap[btn.textContent.trim()];
+    document.querySelectorAll('.project-card').forEach(card => {
+      const match = cat === 'all' || card.dataset.category === cat;
+      card.style.display = match ? 'block' : 'none';
+    });
+  });
+});
 </script>
 </body>
 </html>
