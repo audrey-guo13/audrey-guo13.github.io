@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Overpacker — Audrey Guo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sand:#f5f0e8;--ink:#1e1a16;--rose:#b07d6e;--muted:#7a6f65;--border2:rgba(30,26,22,0.1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--sand);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 6vw;background:rgba(245,240,232,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;letter-spacing:.1em;color:var(--ink);text-decoration:none;}
+.nav-links{display:flex;gap:2.4rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--rose);}
+
+.page-content{max-width:680px;margin:0 auto;padding:10rem 6vw 8rem;}
+.back-link{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:3rem;transition:color .3s;}
+.back-link:hover{color:var(--rose);}
+.project-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:.6rem;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:300;line-height:1;color:var(--ink);margin-bottom:.6rem;}
+.post-meta{font-size:.75rem;color:var(--muted);letter-spacing:.08em;margin-bottom:2.4rem;padding-bottom:2.4rem;border-bottom:1px solid var(--border2);}
+p{font-size:.98rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem;}
+p strong{color:var(--ink);font-weight:400;}
+.post-image{width:100%;margin:2.4rem 0;border:1px solid var(--border2);}
+.image-caption{font-size:.75rem;color:var(--muted);text-align:center;margin-top:-.8rem;margin-bottom:2.4rem;letter-spacing:.05em;}
+.live-link{display:inline-block;margin-top:1.6rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px;transition:color .3s;}
+.live-link:hover{color:var(--rose);}
+
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border2);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">AG</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-content">
+  <a href="projects.html" class="back-link">← Back to Projects</a>
+  <div class="project-eyebrow">Tech & AI · V1 Live</div>
+  <h1>Overpacker</h1>
+  <div class="post-meta">2026 · Solo build · Claude API · Supabase</div>
+
+  <p>It started with a Ryanair gate agent stopping me and making me repack my entire bag on the spot because it was a few centimetres too wide. I had to empty one bag into another, stuff everything in, weigh it in the little metal frame thing — the whole humiliating routine. And then the same week, I watched my friend spend twenty minutes tearing her luggage apart looking for a necklace she'd misplaced somewhere inside.</p>
+
+  <p>Neither of those things is a catastrophe, but they're the kind of friction that makes travel feel harder than it should, and both of them come down to the same thing: packing without a real system. I'd been wanting to build something with an AI API for a while. Not just use AI as a tool but actually understand how calling one works, what goes into the prompt, how you shape the output. Overpacker felt like the right scope. Small enough to actually finish. Real enough to actually use.</p>
+
+  <p><strong>The product is simple.</strong> You enter your destination, travel dates, what you're doing, and your packing style. It generates a personalised, categorised list in seconds — specific to your trip, not a generic checklist that tells everyone to bring a universal adapter and a travel pillow. Users can save trips under their account and come back to check things off as they pack.</p>
+
+  <img src="images/overpacker-list.png" alt="Overpacker packing list for Sardinia" class="post-image"/>
+  <p class="image-caption">Generated list for a 5-day trip to Sardinia</p>
+
+  <p>The two things I cared most about technically were the <strong>Claude API integration</strong> and building a proper <strong>login and authentication system</strong>. The login piece especially — I'd always avoided it in previous attempts at building things because it felt like a wall. Turns out with the right tools it's actually approachable, and now that I've done it once it's something I can carry into everything I build from here.</p>
+
+  <p>V1 is live and free. The next version is about making it learn. Right now it generates a solid list for any trip, but it doesn't know you. V2 will let users build out their own preferences over time — what you always bring, what you never pack, so the list gets more accurate the more you use it. More updates to come! </p>
+
+  <a href="https://overpacker.netlify.app/" target="_blank" class="live-link">Try Overpacker →</a>
+</div>
+
+<footer>© 2026 Audrey Guo — <a href="projects.html" style="color:inherit;text-decoration:none;">Back to Projects</a></footer>
+
+</body>
+</html>
